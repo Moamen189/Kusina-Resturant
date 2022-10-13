@@ -4,7 +4,7 @@
 @using Umbraco.Cms.Core.Models.PublishedContent;
 @{
     Layout = "Layout.cshtml";
-    var chefs = Model.Root().Children().Where(x => x.IsDocumentType("chefs")).FirstOrDefault();
+    var chefs = (ContentModels.Chefs)Model.Root().Children().Where(x => x.IsDocumentType("chefs")).FirstOrDefault();
 
 }
 
@@ -113,10 +113,10 @@
 				<div class="row">
 
                     @{
-                        foreach (ContentModels.Chef item in chefs.Children){
+                        foreach (ContentModels.Chef item in chefs.Children.Take(Convert.ToInt32(chefs.NumberOfChefs))){
                             	<div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="staff">
-							<div class="img" style="background-image: url(/images/chef-4.jpg);"></div>
+							<div class="img" style="background-image: url(@item.ChefPhoto.Url());"></div>
 							<div class="text px-4 pt-4">
 								<h3>@item.ChefName</h3>
                                 <span class="position mb-2">@item.ChefPosition</span>

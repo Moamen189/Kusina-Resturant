@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Cms.Web.Common.Macros.PartialViewMacroPage
+
+
+@{
+    var link = Model.MacroParameters["link"]?.ToString();
+    var captions = Model.MacroParameters["captions"]?.ToString();
+
+    var newWindow = Model.MacroParameters["newWindow"]?.ToString();
+
+}
+
+<div>
+
+    <a href="#" class="btn btn-primary px-4 py-3 mt-3">@captions</a>
+
+</div>

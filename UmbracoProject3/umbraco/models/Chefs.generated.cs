@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Chefs</summary>
 	[PublishedModel("chefs")]
-	public partial class Chefs : PublishedContentModel
+	public partial class Chefs : PublishedContentModel, INavigation
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -63,5 +63,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.2.1+25a20cf")]
 		[ImplementPropertyType("numberOfChefs")]
 		public virtual decimal NumberOfChefs => this.Value<decimal>(_publishedValueFallback, "numberOfChefs");
+
+		///<summary>
+		/// Add To Nav: if true will be added to nav bar
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.2.1+25a20cf")]
+		[ImplementPropertyType("addToNav")]
+		public virtual bool AddToNav => global::Umbraco.Cms.Web.Common.PublishedModels.Navigation.GetAddToNav(this, _publishedValueFallback);
 	}
 }

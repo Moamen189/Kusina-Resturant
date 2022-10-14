@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Specialties</summary>
 	[PublishedModel("specialties")]
-	public partial class Specialties : PublishedContentModel
+	public partial class Specialties : PublishedContentModel, INavigation
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -56,5 +56,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("specialtiesTitle")]
 		public virtual string SpecialtiesTitle => this.Value<string>(_publishedValueFallback, "specialtiesTitle");
+
+		///<summary>
+		/// Add To Nav: if true will be added to nav bar
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.2.1+25a20cf")]
+		[ImplementPropertyType("addToNav")]
+		public virtual bool AddToNav => global::Umbraco.Cms.Web.Common.PublishedModels.Navigation.GetAddToNav(this, _publishedValueFallback);
 	}
 }

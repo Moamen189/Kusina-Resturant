@@ -1,25 +1,16 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Specialties>
-@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
-@using Umbraco.Cms.Core.Models.PublishedContent;
+﻿@inherits Umbraco.Cms.Web.Common.Macros.PartialViewMacroPage
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels
+
 @{
-	Layout = "Layout.cshtml";
-    var homePage = (ContentModels.Home)Model.Root();
+	var pageId = Model.MacroParameters["MenuPage"]?.ToString();
+	var NumberOfItems = Convert.ToInt32(Model.MacroParameters["NumberOfItems"]?.ToString());
+
+	var  myPage = Umbraco.Content(pageId);
+	var myMenus = myPage?.Children()?.Where(x => x.IsVisible()).Take(NumberOfItems);
 }
 
-<section class="hero-wrap hero-wrap-2" style="background-image: url('/images/bg_4.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-2 bread">Specialties</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Menu <i class="ion-ios-arrow-forward"></i></span></p>
-          </div>
-        </div>
-      </div>
-    </section>
-	
-    		<section class="ftco-section">
+
+@*<section class="ftco-section">
     	<div class="container">
     		<div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-7 text-center heading-section ftco-animate">
@@ -669,8 +660,10 @@
         </div>
     	</div>
 
-    </section>
-		@*<section class="ftco-section">
+    </section>*@
+
+
+				  <section class="ftco-section">
     	<div class="container">
     		<div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-7 text-center heading-section ftco-animate">
@@ -684,7 +677,8 @@
         		<div class="heading-menu text-center ftco-animate">
         			<h3>Breakfast</h3>
         		</div>
-                @foreach(ContentModels.Meal item in Model.Children()){
+            @foreach (ContentModels.Meal item in myMenus)
+            {
                     if (item.MenuType == "Breakfast"){
 
 
@@ -730,7 +724,7 @@
         		<div class="heading-menu text-center ftco-animate">
         			<h3>Lunch</h3>
         		</div>
-                @foreach (ContentModels.Meal item in Model.Children())
+            @foreach (ContentModels.Meal item in myMenus)
                 {
                     if (item.MenuType == "Lunch")
                     {
@@ -778,7 +772,7 @@
         		<div class="heading-menu text-center ftco-animate">
         			<h3>Dinner</h3>
         		</div>
-                @foreach (ContentModels.Meal item in Model.Children())
+            @foreach (ContentModels.Meal item in myMenus)
                 {
                     if (item.MenuType == "Dinner")
                     {
@@ -827,7 +821,7 @@
         		<div class="heading-menu text-center ftco-animate">
         			<h3>Desserts</h3>
         		</div>
-                @foreach (ContentModels.Meal item in Model.Children())
+            @foreach (ContentModels.Meal item in myMenus)
                 {
                     if (item.MenuType == "Desserts")
                     {
@@ -874,7 +868,7 @@
         		<div class="heading-menu text-center ftco-animate">
         			<h3>Wine Card</h3>
         		</div>
-                @foreach (ContentModels.Meal item in Model.Children())
+            @foreach (ContentModels.Meal item in myMenus)
                 {
                    if (item.MenuType == "Wine Card")
                     {
@@ -920,7 +914,7 @@
         		<div class="heading-menu text-center ftco-animate">
         			<h3>Drinks</h3>
         		</div>
-                @foreach (ContentModels.Meal item in Model.Children())
+            @foreach (ContentModels.Meal item in myMenus)
                 {
                     if (item.MenuType == "Drinks")
                     {
@@ -963,4 +957,4 @@
             </div>
     </div>
 
-    </section>*@
+    </section>

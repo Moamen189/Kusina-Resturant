@@ -15,29 +15,31 @@ using UmbracoProject3.umbraco.models;
 namespace UmbracoProject3.Controllers
 {
   
-    public class ContactForm : /*Surface*/Controller
+    public class ContactFormController : SurfaceController
     {
-        //public ContactForm(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
-        //{
-        //}
+        public ContactFormController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
+        {
+        }
+
+
 
         [HttpPost]
-        public ActionResult SubmitForm(ContentForm model)
+        public IActionResult SubmitForm(ContentForm model)
         {
             if (ModelState.IsValid)
             {
-                MailMessage mailMessage = new MailMessage(model.Email, "admin@admin.com");
-                mailMessage.Subject = model.Subject;
-                mailMessage.Body = model.Message;
+                //MailMessage mailMessage = new MailMessage(model.Email, "admin@admin.com");
+                //mailMessage.Subject = model.Subject;
+                //mailMessage.Body = model.Message;
 
-                SmtpClient smtpClient = new SmtpClient("127.0.0.1", 25);
-                smtpClient.Send(mailMessage);
-                TempData["ContactResult"] = "Mas been sent ...";
-                return View();
+                //SmtpClient smtpClient = new SmtpClient("127.0.0.1", 51719);
+                //smtpClient.Send(mailMessage);
+                TempData["ContactResult"] = "Mas been sent .......";
+                return RedirectToCurrentUmbracoPage();
             }
-            return View();
+            //return View();
 
-           // return RedirectToCurrentUmbracoPage();
+            return CurrentUmbracoPage();
 
         }
     }

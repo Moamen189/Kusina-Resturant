@@ -5,6 +5,7 @@
 @{
 	Layout = "Layout.cshtml";
     var homePage = (ContentModels.Home)Model.Root();
+
 }
 
 <section class="hero-wrap hero-wrap-2" style="background-image: url('/images/bg_4.jpg');" data-stellar-background-ratio="0.5">
@@ -19,7 +20,7 @@
       </div>
     </section>
 	
-    		<section class="ftco-section">
+    		@*<section class="ftco-section">
     	<div class="container">
     		<div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-7 text-center heading-section ftco-animate">
@@ -669,8 +670,8 @@
         </div>
     	</div>
 
-    </section>
-		@*<section class="ftco-section">
+    </section>*@
+		<section class="ftco-section">
     	<div class="container">
     		<div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-7 text-center heading-section ftco-animate">
@@ -685,7 +686,8 @@
         			<h3>Breakfast</h3>
         		</div>
                 @foreach(ContentModels.Meal item in Model.Children()){
-                    if (item.MenuType == "Breakfast"){
+                if (item.MenuType == "Breakfast" || item.MenuType == "افطار")
+                {
 
 
                         <div class="menus d-flex ftco-animate">
@@ -732,7 +734,7 @@
         		</div>
                 @foreach (ContentModels.Meal item in Model.Children())
                 {
-                    if (item.MenuType == "Lunch")
+                if (item.MenuType == "Lunch" || item.MenuType == "غذاء")
                     {
 
 
@@ -780,7 +782,7 @@
         		</div>
                 @foreach (ContentModels.Meal item in Model.Children())
                 {
-                    if (item.MenuType == "Dinner")
+                if (item.MenuType == "Dinner" | item.MenuType == "عشاء")
                     {
 
 
@@ -829,7 +831,7 @@
         		</div>
                 @foreach (ContentModels.Meal item in Model.Children())
                 {
-                    if (item.MenuType == "Desserts")
+                if (item.MenuType == "Desserts" || item.MenuType == "حلويات")
                     {
 
 
@@ -876,7 +878,7 @@
         		</div>
                 @foreach (ContentModels.Meal item in Model.Children())
                 {
-                   if (item.MenuType == "Wine Card")
+                if (item.MenuType == "Wine Card" || item.MenuType == "بطاقة النبيذ")
                     {
 
 
@@ -922,7 +924,7 @@
         		</div>
                 @foreach (ContentModels.Meal item in Model.Children())
                 {
-                    if (item.MenuType == "Drinks")
+                if (item.MenuType == "Drinks" || item.MenuType == "مشروبات")
                     {
 
 
@@ -963,4 +965,4 @@
             </div>
     </div>
 
-    </section>*@
+    </section>

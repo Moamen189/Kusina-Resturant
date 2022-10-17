@@ -2,8 +2,8 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels
 
 @{
-	var pageId = Model.MacroParameters["MenuPage"]?.ToString();
-	var NumberOfItems = Convert.ToInt32(Model.MacroParameters["NumberOfItems"]?.ToString());
+    var pageId = Model.MacroParameters.Where(d => Convert.ToInt32(d.Key) == 1);
+    var NumberOfItems = Convert.ToInt32(Model.MacroParameters["NumberOfItems"]?.ToString());
 
 	var  myPage = Umbraco.Content(pageId);
 	var myMenus = myPage?.Children()?.Where(x => x.IsVisible()).Take(NumberOfItems);

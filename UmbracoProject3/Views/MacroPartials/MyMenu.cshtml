@@ -3,7 +3,7 @@
 
 @{
     var pageId = Model.MacroParameters.Where(d => Convert.ToInt32(d.Key) == 1);
-    var NumberOfItems = Convert.ToInt32(Model.MacroParameters["NumberOfItems"]?.ToString());
+    var NumberOfItems = Convert.ToInt32(Model.MacroParameters["numberOfItems"]?.ToString());
 
 	var  myPage = Umbraco.Content(pageId);
 	var myMenus = myPage?.Children()?.Where(x => x.IsVisible()).Take(NumberOfItems);

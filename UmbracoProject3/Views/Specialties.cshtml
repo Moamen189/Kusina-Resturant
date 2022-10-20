@@ -3,9 +3,10 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @using Umbraco.Cms.Core.Models.PublishedContent;
 @{
-	Layout = "Layout.cshtml";
+    Layout = "Layout.cshtml";
     var homePage = (ContentModels.Home)Model.Root();
 
+   
 }
 
 <section class="hero-wrap hero-wrap-2" style="background-image: url('/images/bg_4.jpg');" data-stellar-background-ratio="0.5">
@@ -685,6 +686,8 @@
         		<div class="heading-menu text-center ftco-animate">
         			<h3>Breakfast</h3>
         		</div>
+            
+
                 @foreach(ContentModels.Meal item in Model.Children()){
                 if (item.MenuType == "Breakfast" || item.MenuType == "افطار")
                 {
@@ -876,6 +879,7 @@
         		<div class="heading-menu text-center ftco-animate">
         			<h3>Wine Card</h3>
         		</div>
+          
                 @foreach (ContentModels.Meal item in Model.Children())
                 {
                 if (item.MenuType == "Wine Card" || item.MenuType == "بطاقة النبيذ")
